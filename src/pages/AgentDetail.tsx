@@ -120,41 +120,44 @@ const AgentDetail = () => {
 
           {/* Right sidebar info */}
           <div className="w-[300px] shrink-0">
-            <div className="bg-card rounded-xl border border-border p-5 sticky top-20">
-              <h3 className="text-base font-semibold text-foreground mb-4">Информация</h3>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-foreground">Версия {agent.info.version}</span>
-                    <StatusBadge status={agent.info.versionStatus} />
+            <div className="space-y-4 sticky top-20">
+              {/* Блок Информация */}
+              <div className="bg-card rounded-xl border border-border p-5">
+                <h3 className="text-base font-semibold text-foreground mb-4">Информация</h3>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Статус:</span>
+                    <StatusBadge status={agent.info.statusText} />
                   </div>
-                  <div className="text-muted-foreground mt-1">
-                    <span className="font-medium text-foreground">Оценено:</span>{" "}
-                    {agent.info.evaluatedAt ?? "—"}
+                  <InfoRow label="КЭ:" value={agent.info.ke} />
+                  <InfoRow label="ID:" value={agent.info.cra} />
+                  <InfoRow label="Статус ЖЦ:" value={agent.info.lifecycle} />
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Создано:</span>
+                    <div className="text-right">
+                      <div className="font-medium text-foreground">{agent.info.created}</div>
+                      <div className="text-xs text-primary">{agent.info.daysInWork} день в работе</div>
+                    </div>
                   </div>
+                  <InfoRow label="Ответственный:" value={agent.info.responsible} />
+                  <InfoRow label="Владелец:" value={agent.info.owner} />
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Статус:</span>
-                  <StatusBadge status={agent.info.statusText} />
-                </div>
-                <InfoRow label="КЭ:" value={agent.info.ke} />
-                <InfoRow label="ID:" value={agent.info.cra} />
-                <InfoRow label="Статус ЖЦ:" value={agent.info.lifecycle} />
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Создано:</span>
-                  <div className="text-right">
-                    <div className="font-medium text-foreground">{agent.info.created}</div>
-                    <div className="text-xs text-primary">{agent.info.daysInWork} день в работе</div>
-                  </div>
-                </div>
-                <InfoRow label="Ответственный:" value={agent.info.responsible} />
-                <InfoRow label="Владелец:" value={agent.info.owner} />
               </div>
 
-              <div className="border-t border-border mt-4 pt-4">
+              {/* Блок Текущая версия */}
+              <div className="bg-card rounded-xl border border-border p-5">
+                <h3 className="text-base font-semibold text-foreground mb-3">Текущая версия</h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-sm font-semibold text-foreground">Версия {agent.info.version}</span>
+                  <StatusBadge status={agent.info.versionStatus} />
+                </div>
+                <div className="text-sm text-muted-foreground mb-4">
+                  <span className="font-medium text-foreground">Оценено:</span>{" "}
+                  {agent.info.evaluatedAt ?? "—"}
+                </div>
                 <button
                   onClick={() => setShowVersionDetail(true)}
-                  className="w-full flex items-center justify-between text-sm text-foreground hover:text-primary transition-colors"
+                  className="w-full flex items-center justify-between text-sm text-foreground hover:text-primary transition-colors border-t border-border pt-3"
                 >
                   <span>Подробнее о версии</span>
                   <ChevronRight className="w-4 h-4" />
@@ -162,7 +165,7 @@ const AgentDetail = () => {
               </div>
 
               {/* Actions */}
-              <div className="mt-4 space-y-2">
+              <div className="bg-card rounded-xl border border-border p-5 space-y-2">
                 <div className="flex gap-2">
                   <button className="flex-1 h-10 rounded-lg bg-primary text-primary-foreground text-sm font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
                     <Sparkles className="w-4 h-4" /> Оценить
