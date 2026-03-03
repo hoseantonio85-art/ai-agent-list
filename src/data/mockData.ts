@@ -222,6 +222,7 @@ export const agents: Agent[] = [
         sentValue: "ERR",
         syncStatus: "Ошибка",
       },
+    },
     risks: [],
   },
   {
