@@ -215,7 +215,12 @@ export const agents: Agent[] = [
       responsible: "Иванов И.И.",
       owner: "Петров П.П.",
       description: "ИИ-агент для автоматизации регистрации самозанятых.",
-    },
+      qgm: {
+        flag: "ERR",
+        lastSuccessSync: "18.02.2026 · 12:01",
+        sentValue: "ERR",
+        syncStatus: "Ошибка",
+      },
     risks: [],
   },
   {

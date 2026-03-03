@@ -265,6 +265,22 @@ const AgentDetail = () => {
                     <span className="text-xs text-muted-foreground">25 Мб</span>
                   </div>
 
+                  {/* QGM Integration block */}
+                  {agent.info.qgm && (
+                    <>
+                      <h3 className="text-base font-semibold text-foreground mb-3">Интеграции</h3>
+                      <div className="bg-muted rounded-lg p-4 mb-6">
+                        <div className="text-sm font-semibold text-foreground mb-3">QGM</div>
+                        <div className="space-y-2 text-sm">
+                          <InfoRow label="Флаг" value={agent.info.qgm.flag} />
+                          <InfoRow label="Последняя успешная синхронизация" value={agent.info.qgm.lastSuccessSync ?? "—"} />
+                          <InfoRow label="Значение, отправленное в QGM" value={agent.info.qgm.sentValue} />
+                          <InfoRow label="Статус синхронизации" value={agent.info.qgm.syncStatus} />
+                        </div>
+                      </div>
+                    </>
+                  )}
+
                   <button className="w-full h-10 rounded-lg border border-border text-sm text-foreground flex items-center justify-center gap-2 hover:bg-muted transition-colors">
                     <Edit className="w-4 h-4" /> Редактировать
                   </button>
