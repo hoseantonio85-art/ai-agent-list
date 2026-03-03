@@ -72,6 +72,7 @@ export const agents: Agent[] = [
         sentValue: "PASS",
         syncStatus: "Успешно",
       },
+    },
     risks: [
       {
         id: "r1",
